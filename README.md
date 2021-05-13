@@ -11,6 +11,10 @@ For the details, please check the [homework 3 pdf file](https://courses.cs.washi
 1. Feel free to test as you go and modify whatever you want, but we will only grade the files from [submit.sh](submit.sh).
 
 
+## Notes ##
+1. Every planner returns `PlanResult` instance from `plan` function. Please check if you return the actual values (including elapsed time) in the `PlanResult` instance. This may be used in grading.
+
+
 ## Turn it in ##
 Run the `submit.sh` script by running:
 

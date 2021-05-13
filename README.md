@@ -1,5 +1,6 @@
 # CSE 571 Homework 3
 For the homework 3, we're going to implement motion planning methods: A*, RRT, RRT*.
+For the details, please check the [homework 3 pdf file](https://courses.cs.washington.edu/courses/cse571/21sp/homeworks/hw3.pdf). 
 
 
 ## Rules ##

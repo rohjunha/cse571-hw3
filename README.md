@@ -11,8 +11,33 @@ For the details, please check the [homework 3 pdf file](https://courses.cs.washi
 1. Feel free to test as you go and modify whatever you want, but we will only grade the files from [submit.sh](submit.sh).
 
 
+## Environment setup ##
+As you did in [Homework 0](https://github.com/fishbotics/uw-robotics-571-sp21/#homework-0-setup-conda-and-the-codebase), 
+you may use the same `conda` environment `robotics-class`.   
+In this case, we are using a different repo and not creating a new environment:
+
+```bash
+git clone https://github.com/rohjunha/cse571-hw3.git
+cd cse571-hw3
+conda deactivate
+conda activate robotics-class
+```
+
+Before starting the homework, you will first need to update the repository to get the new files.
+Note that the branch in this repository is called `main` (https://github.com/github/renaming).
+```bash
+git add -A
+git commit -m "before starting new homework"
+git pull origin main
+```
+
+
 ## Notes ##
 1. Every planner returns `PlanResult` instance from `plan` function. Please check if you return the actual values (including elapsed time) in the `PlanResult` instance. This may be used in grading.
+1. Do not implement and use a custom sampling or random function other than the provided functions 
+   ([MapEnvironment.sample](https://github.com/rohjunha/cse571-hw3/blob/main/environments/MapEnvironment.py#L29-L36),
+   [CarEnvironment.sample](https://github.com/rohjunha/cse571-hw3/blob/main/environments/CarEnvironment.py#L40-L49)).
+   Using a custom sampling or random function may cause problems in grading.
 
 
 ## Turn it in ##

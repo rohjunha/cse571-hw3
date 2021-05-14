@@ -25,8 +25,8 @@ class EnvironmentBase:
         # Obtain the boundary limits
         # Check if file exists
         self.map = np.loadtxt(map_file)
-        self.xlimit = [0, np.shape(self.map)[1] - 1]
-        self.ylimit = [0, np.shape(self.map)[0] - 1]
+        self.xlimit = [0, np.shape(self.map)[0] - 1]
+        self.ylimit = [0, np.shape(self.map)[1] - 1]
 
         # Variables for the visualizer
         self.fig = None

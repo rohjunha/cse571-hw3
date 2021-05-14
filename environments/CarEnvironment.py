@@ -12,6 +12,7 @@ class CarEnvironment(EnvironmentBase):
 
         Robot state: [x, y, theta]
     """
+
     def __init__(
             self,
             map_file: str,

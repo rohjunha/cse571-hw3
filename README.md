@@ -24,11 +24,9 @@ conda deactivate
 conda activate robotics-class
 ```
 
-Before starting the homework, you will first need to update the repository to get the new files.
+If there is an update from the repository, you may need to pull from the remote repository.
 Note that the branch in this repository is called `main` (https://github.com/github/renaming).
 ```bash
-git add -A
-git commit -m "before starting new homework"
 git pull origin main
 ```
 

@@ -35,6 +35,12 @@ class MapEnvironment(EnvironmentBase):
         idx = self.rng.choice(len(self.clear_map_idcs))
         return self.clear_map_idcs[idx, :].reshape((2, 1))
 
+        # clear = np.argwhere(self.map == 0)
+        # idx = self.rng.choice(len(clear))
+        # return clear[idx, :].reshape((2, 1))
+
+
+
     def goal_criterion(
             self,
             config: np.ndarray,

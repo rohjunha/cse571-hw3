@@ -25,15 +25,15 @@ class MapEnvironment(EnvironmentBase):
         self.epsilon = epsilon
 
         self.check_start_and_goal_validity()
+        self.clear_map_idcs = np.argwhere(self.map == 0)
 
     def sample(self) -> np.ndarray:
         """ Sample random clear point from the map
 
         @return: numpy array of sampled point
         """
-        clear = np.argwhere(self.map == 0)
-        idx = self.rng.choice(len(clear))
-        return clear[idx, :].reshape((2, 1))
+        idx = self.rng.choice(len(self.clear_map_idcs))
+        return self.clear_map_idcs[idx, :].reshape((2, 1))
 
     def goal_criterion(
             self,

@@ -37,15 +37,15 @@ class CarEnvironment(EnvironmentBase):
         self.max_steer_angle = max_steer_angle
 
         self.check_start_and_goal_validity()
+        self.clear_map_idcs = np.argwhere(self.map == 0)
 
     def sample(self) -> np.ndarray:
         """ Sample random clear point from the map
 
         @return: numpy array of sampled point
         """
-        clear = np.argwhere(self.map == 0)
-        idx = self.rng.choice(len(clear))
-        xy = clear[idx, :].reshape((2, 1))
+        idx = self.rng.choice(len(self.clear_map_idcs))
+        xy = self.clear_map_idcs[idx, :].reshape((2, 1))
         theta = self.rng.uniform(0, 2 * np.pi)
         return np.concatenate([xy, np.array([[theta]])])
 

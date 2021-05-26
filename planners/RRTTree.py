@@ -22,9 +22,9 @@ class RRTTree:
 
             @param config: Sampled configuration.
         """
-        ver = np.concatenate(self.vertices, axis=1)
+        ver = np.concatenate(self.vertices, axis=1)  # dim_vertex, num_vertices
         idx = (np.linalg.norm(ver - config, axis=0)).argmin()
-        return idx, ver[:, idx].reshape(2, 1)
+        return idx, ver[:, idx].reshape(ver.shape[0], 1)
 
     def GetNNInRad(
             self,
@@ -38,8 +38,8 @@ class RRTTree:
         ver = np.concatenate(self.vertices, axis=1)
         indexes = np.linalg.norm(ver - config, axis=0) < rad
         vids = np.nonzero(indexes)[0].tolist()
-        vertices = np.transpose(ver[:, indexes], (1, 0))  # num_vertices, 2
-        vertices = vertices.reshape(vertices.shape[0], 2, 1)  # num_vertices, 2, 1
+        vertices = np.transpose(ver[:, indexes], (1, 0))  # num_vertices, dim_vertex
+        vertices = vertices.reshape(vertices.shape[0], vertices.shape[1], 1)  # num_vertices, dim_vertex, 1
         return vids, vertices
 
     def AddVertex(

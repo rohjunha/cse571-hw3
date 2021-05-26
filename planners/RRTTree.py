@@ -1,4 +1,3 @@
-import operator
 from typing import List, Dict, Tuple
 
 import numpy as np
@@ -23,13 +22,9 @@ class RRTTree:
 
             @param config: Sampled configuration.
         """
-        dists = []
-        for v in self.vertices:
-            dists.append(self.planning_env.compute_distance(config, v))
-
-        vid, vdist = min(enumerate(dists), key=operator.itemgetter(1))
-
-        return vid, self.vertices[vid]
+        ver = np.concatenate(self.vertices, axis=1)
+        idx = (np.linalg.norm(ver - config, axis=0)).argmin()
+        return idx, ver[:, idx].reshape(2, 1)
 
     def GetNNInRad(
             self,
@@ -40,14 +35,11 @@ class RRTTree:
             @param config: Sampled configuration.
             @param rad ball radius
         """
-        rad = np.abs(rad)
-        vids = []
-        vertices = []
-        for idx, v in enumerate(self.vertices):
-            if self.planning_env.compute_distance(config, v) < rad:
-                vids.append(idx)
-                vertices.append(v)
-
+        ver = np.concatenate(self.vertices, axis=1)
+        indexes = np.linalg.norm(ver - config, axis=0) < rad
+        vids = np.nonzero(indexes)[0].tolist()
+        vertices = np.transpose(ver[:, indexes], (1, 0))  # num_vertices, 2
+        vertices = vertices.reshape(vertices.shape[0], 2, 1)  # num_vertices, 2, 1
         return vids, vertices
 
     def AddVertex(

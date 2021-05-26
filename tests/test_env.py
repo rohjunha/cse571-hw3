@@ -10,9 +10,11 @@ from environments.MapEnvironment import MapEnvironment
 def MAP_FILE():
     return Path(Path(__file__).parent, '../maps/map2.txt')
 
+
 @pytest.fixture
 def START():
     return np.array([321, 148]).reshape(2, 1)
+
 
 @pytest.fixture
 def GOAL():
@@ -30,4 +32,3 @@ def test_sample(MAP_FILE, START, GOAL):
         map_env.sample()
     end = time.time()
     print(f"elapsed time: {end - start} for {n_samples} samples")
-
